@@ -15,7 +15,7 @@ var dailyQuestions = [
                questionPrompt: "How good (bad) were you this morning?",
                minResponse: 1,
                maxResponse: 7,
-               
+
                labels: [
                         {label: "7 Very good"},
                         {label: "6"},
@@ -26,7 +26,7 @@ var dailyQuestions = [
                         {label: "1 Very bad"}
                         ]
                },
-               
+
                /*1*/
                {
                variableName: "stress",
@@ -128,7 +128,7 @@ var dailyQuestions = [
                {
                variableName: "submit",
                questionPrompt: "Thanks! This is the end of the session. Please click 'Submit' to submit your answers. If you want to modify your answers, click 'Back'.",
-               },   
+               },
                ];
 
 var x = dailyQuestions.length;
@@ -150,7 +150,7 @@ var weeklyQuestions = [
                         {label: "1 Almost impossible"}
                         ]
                },
-               
+
                /*9*/
                {
                variableName: "belief_longterm2",
@@ -308,14 +308,14 @@ var weeklyQuestions = [
                {
                variableName: "submit",
                questionPrompt: "Thanks! This is the end of the session. Please click 'Submit' to submit your answers. If you want to modify your answers, click 'Back'.",
-               }, 
+               },
                ];
 
 var y = weeklyQuestions.length;
 
 /*(Reminding and motivational message) + sleep diary + reminder to wear the device */
 var sleepQuestions = [
-               
+
                /*19*/
                {
                variableName: "sleep",
@@ -343,7 +343,7 @@ var sleepQuestions = [
 var s = sleepQuestions.length;
 
 var messagePage = [
-               
+
                /*21*/
                {
                variableName: "suggestion",
@@ -357,7 +357,7 @@ var messagePage = [
                },
                ];
 
-/*Questions to set up participant notifications so that notifications are customized to participant's schedule*/                
+/*Questions to set up participant notifications so that notifications are customized to participant's schedule*/
 var participantSetup = [
               /*-19*/
               {
@@ -411,7 +411,7 @@ var participantSetup = [
                         {label: "1 Almost impossible"}
                         ]
                },
-               
+
                /*-11*/
                {
                variableName: "belief_longterm2",
@@ -569,7 +569,7 @@ var participantSetup = [
               {
               variableName: "submit",
               questionPrompt: "Thanks! Now we have all the information we need. Please click 'Submit' to submit your answers and see the instruction of forming a lunch walk habit. If you want to modify your answers, click 'Back'.",
-              }, 
+              },
 
               /*-1*/
               {
@@ -625,7 +625,7 @@ var response;
 //has completed a sufficient number of questionnaires for the day.
 //The unique key also helps organize the data when preparing for data analysis
 //uncomment next line if developing for iOS
-//var uniqueKey;  
+//var uniqueKey;
 
 
 var app = {
@@ -645,17 +645,17 @@ bindEvents: function() {
 //these functions tell the app what to do at different stages of running
 onDeviceReady: function() {
     // Enable background mode
-    cordova.plugins.backgroundMode.setDefaults({ text:''});
+    /*cordova.plugins.backgroundMode.setDefaults({ text:''});
     cordova.plugins.backgroundMode.enable();
 
     backgroundGeolocation.configure(app.locationSuccess, app.locationError, {
             desiredAccuracy: 10,
             stationaryRadius: 5,
             distanceFilter: 5,
-            interval: 1000, // <!-- poll for position every minute 
+            interval: 1000, // <!-- poll for position every minute
             //fastestInterval: 120000,
-            //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle. 
-            stopOnTerminate: false, // <-- enable this to clear background location settings when the app terminates 
+            //debug: true, // <-- enable this hear sounds for background-geolocation life-cycle.
+            stopOnTerminate: false, // <-- enable this to clear background location settings when the app terminates
     });
 
     if (localStore.setup == 1) {
@@ -691,7 +691,7 @@ onDeviceReady: function() {
                 //alert("Adding geofence failed");
                 console.log('Adding geofence failed', reason);
             });
-    }
+    }*/
 
     app.init();
 },
@@ -773,7 +773,7 @@ getWeather: function(latitude, longitude) {
                                       cordova.plugins.notification.local.schedule({id: 999, title: "Suggestion to you", text: 'The weather is good today! Please go for a walk after lunch!', at: date_suggestion, icon: 'ic_launcher'});
                                       localStore["suggestion_" + year + "_" + month + "_" + day] = localStore.participant_id + "_999_" + date_suggestion;
                               }
-                     }                    
+                     }
             }
 
         }).fail(function () {
@@ -791,7 +791,7 @@ findKey: function(name, key, underline) {
                     q = p;
                     break;
             }
-    }   
+    }
     return q;
 },
 
@@ -831,7 +831,7 @@ checkValid: function(value, index) {
 },
 
 //Beginning our app functions
-/* The first function is used to specify how the app should display the various questions. You should note which questions 
+/* The first function is used to specify how the app should display the various questions. You should note which questions
 should be displayed using which formats before customizing this function*/
 renderQuestion: function(question_index) {
     //First load the correct question from the JSON database
@@ -849,9 +849,9 @@ renderQuestion: function(question_index) {
     else {question = dailyQuestions[question_index];}
 
     //Now populate the view for this question, depending on whether it uses buttons or textarea
-    /*This next statement is a conditional statement saying that questions that are not equal to this number should be displayed as 
+    /*This next statement is a conditional statement saying that questions that are not equal to this number should be displayed as
     *rating scales (i.e., small numbers at the top of the screen and larger numbers at the bottom of the screen). */
-    
+
     if (question_index > -(z - 6) && question_index != (x - 1) && question_index != (x + y -1) && question_index != -2 && question_index != -1 && question_index != (x + y + 1) && question_index != (x + y + s) && question_index != (x + y + s + 1)) {
             question.buttons = "";
             var label_count = 0;
@@ -874,7 +874,7 @@ renderQuestion: function(question_index) {
 
             //The following if structure defines what happens when the user click "Next", "Back", and option buttons
             $("#question button").click(function(){
-                //When the user click on "Next" 
+                //When the user click on "Next"
                 if (this.innerHTML=="Next") {
                         //A variable element is created and used to get the option that is selected (i.e., with blue background-color)
                         var element = "";
@@ -940,15 +940,15 @@ renderQuestion: function(question_index) {
                                  else {
                                          var backQuestion = weeklyQuestions[question_index - 1 - x];
                                  }
-                                 app.renderQuestion(question_index - 1);                             
+                                 app.renderQuestion(question_index - 1);
                         }
-                        
+
                         //Find out which option of the next question was selected and render it (change the color or value in the text area)
                         if (question_index <= -1) {
                                 var k = app.findKey(backQuestion.variableName, "", "");
                         }
                         else {
-                                var k = app.findKey(backQuestion.variableName, uniqueKey, "_");  
+                                var k = app.findKey(backQuestion.variableName, uniqueKey, "_");
                         }
                         if (isNaN(k) == false){
                                 if (question_index == -(z - 7)) {
@@ -958,7 +958,7 @@ renderQuestion: function(question_index) {
                                         $("#question button[value="+localStore[localStore.key(k)]+"]").css("background-color", "#4169E1");
                                         $("#question button[value="+localStore[localStore.key(k)]+"]").css("color", "#FFFFFF");
                                 }
-                        }                 
+                        }
                 }
                 //When the user click on one of the options
                 else {
@@ -995,7 +995,7 @@ renderQuestion: function(question_index) {
                                     localStore[uniqueRecord] = 1;
                                     app.renderQuestion(-1);
                             }
-                            
+
                     }
                     //When the user click on "Back"
                     else {
@@ -1029,7 +1029,7 @@ renderQuestion: function(question_index) {
                             app.schedulingQuestionnaires();
                             app.renderLastPage(lastPage[0]);
                     }
-            });               
+            });
     }
 
     //Render the message page separately
@@ -1048,7 +1048,7 @@ renderQuestion: function(question_index) {
                                     localStore[uniqueRecord] = 1;
                             }
                     }
-            });               
+            });
     }
 
     //Render open-ended questions
@@ -1061,7 +1061,7 @@ renderQuestion: function(question_index) {
                     $("#question").html(Mustache.render(questionTmpl, question));
             }
             $("#question button").click(function() {
-                    //When the user click on "Next" 
+                    //When the user click on "Next"
                     if (this.innerHTML == "Next") {
                             if ($("textarea").val() != "") {
                                     if (app.checkValid($("textarea").val(), question_index)) {
@@ -1125,7 +1125,7 @@ renderQuestion: function(question_index) {
             });
     }
 },
-    
+
 renderLastPage: function(pageData) {
     $("#question").html(Mustache.render(lastPageTmpl, pageData));
     //snooze function logic
@@ -1195,10 +1195,10 @@ init: function() {
                                          //alert("leave workplace");
                                          backgroundGeolocation.stop();
                                  }
-                         }); 
+                         });
                      };
 
-                     // Show different pages depending on the date and time            
+                     // Show different pages depending on the date and time
                      if (sessionTime.getDay() == 0 || sessionTime.getDay() == 6) {
                               app.renderLastPage(lastPage[0]);
                      }
@@ -1223,11 +1223,11 @@ init: function() {
                               else {
                                        if (hour > lunchHour || (hour == lunchHour && minute >= lunchMinute)) {
                                                 if (!localStore["suggestion_" + year + "_" + month + "_" + day] || localStore["suggestion_" + year + "_" + month + "_" + day] == "undefined") {
-                                                     app.renderLastPage(lastPage[0]); 
+                                                     app.renderLastPage(lastPage[0]);
                                                 }
                                                 else {
                                                       if (!localStore["suggestionReceived_" + year + "_" + month + "_" + day] || localStore["suggestionReceived_" + year + "_" + month + "_" + day] == "undefined") {
-                                                           app.renderQuestion(x + y + s); 
+                                                           app.renderQuestion(x + y + s);
                                                       }
                                                       else {app.renderLastPage(lastPage[0]);}
                                                 }
@@ -1246,10 +1246,10 @@ init: function() {
                               }
                      }
             }
-      }           
+      }
 },
-  
-/* Record User Responses */  
+
+/* Record User Responses */
 recordResponse: function(button, count) {
     //uncomment up to "localStore[uniqueRecord] = response;" to test whether app is recording and sending data correctly (Stage 2 of Customization)
 //     //Record date (create new date object)
@@ -1304,13 +1304,13 @@ recordResponse: function(button, count) {
     }
     else {app.renderQuestion(count + 1); newCount = count + 1}
 },
-    
+
 /* Prepare for Resume and Store Data */
 /* Time stamps the current moment to determine how to resume */
 pauseEvents: function() {
     localStore.pause_time = new Date().getTime();
 },
-      
+
 sampleParticipant: function() {
       var current_moment = new Date();
       var current_time = current_moment.getTime();
@@ -1366,7 +1366,7 @@ sampleParticipant: function() {
     //uncomment following else statement if developing for Android
       else {uniqueKey = localStore.uniqueKey;}
     //app.triggeredNotifs();
-    /*Because saving data will remove those data in the localstorage, participants cannot go back to see their previous answers, so I commented the next line to 
+    /*Because saving data will remove those data in the localstorage, participants cannot go back to see their previous answers, so I commented the next line to
     disable data saving when the app is resumed */
     //app.saveData();
 },
@@ -1390,7 +1390,7 @@ saveDataLastPage:function() {
            crossDomain: true,
            success: function (result) {
           //Define all the variables that need to be retained after sending the data
-           var pid = localStore.participant_id, latitude = localStore["latitude"], longitude = localStore["longitude"], wakeup = localStore["wakeup"], lunchtime = localStore["lunchtime"], weather = localStore["weather_" + year + "_" + month + "_" + day], daily = localStore["dailySurvey_" + year + "_" + month + "_" + day], sleep = localStore["sleepSurvey_" + year + "_" + month + "_" + day]; 
+           var pid = localStore.participant_id, latitude = localStore["latitude"], longitude = localStore["longitude"], wakeup = localStore["wakeup"], lunchtime = localStore["lunchtime"], weather = localStore["weather_" + year + "_" + month + "_" + day], daily = localStore["dailySurvey_" + year + "_" + month + "_" + day], sleep = localStore["sleepSurvey_" + year + "_" + month + "_" + day];
            var firstYear = localStore["firstYear"], firstMonth = localStore["firstMonth"], firstDay = localStore["firstDay"], lastYear = localStore["lastYear"], lastMonth = localStore["lastMonth"], lastDay = localStore["lastDay"], suggestion = localStore["suggestion_" + year + "_" + month + "_" + day], setup = localStore.setup, suggestionReceived = localStore["suggestionReceived_" + year + "_" + month + "_" + day], reminderReceived = localStore["reminderReceived_" + year + "_" + month + "_" + day];
 //        //uncomment next line if developing for Android*/
            var uniqueKey = localStore.uniqueKey;
@@ -1412,7 +1412,7 @@ saveDataLastPage:function() {
            localStore["suggestion_" + year + "_" + month + "_" + day] = suggestion;
            localStore.setup = setup;
            localStore["suggestionReceived_" + year + "_" + month + "_" + day] = suggestionReceived;
-           localStore["reminderReceived_" + year + "_" + month + "_" + day] = reminderReceived;   
+           localStore["reminderReceived_" + year + "_" + month + "_" + day] = reminderReceived;
 //        //uncomment next line if developing for Android*/
            localStore.uniqueKey = uniqueKey;
            navigator.notification.alert("Data Sent Successfully", function(){}, "", "");
@@ -1440,7 +1440,7 @@ saveData:function() {
            crossDomain: true,
            success: function (result) {
           //Define all the variables that need to be retained after sending the data
-           var pid = localStore.participant_id, latitude = localStore["latitude"], longitude = localStore["longitude"], wakeup = localStore["wakeup"], lunchtime = localStore["lunchtime"], weather = localStore["weather_" + year + "_" + month + "_" + day], daily = localStore["dailySurvey_" + year + "_" + month + "_" + day], sleep = localStore["sleepSurvey_" + year + "_" + month + "_" + day]; 
+           var pid = localStore.participant_id, latitude = localStore["latitude"], longitude = localStore["longitude"], wakeup = localStore["wakeup"], lunchtime = localStore["lunchtime"], weather = localStore["weather_" + year + "_" + month + "_" + day], daily = localStore["dailySurvey_" + year + "_" + month + "_" + day], sleep = localStore["sleepSurvey_" + year + "_" + month + "_" + day];
            var firstYear = localStore["firstYear"], firstMonth = localStore["firstMonth"], firstDay = localStore["firstDay"], lastYear = localStore["lastYear"], lastMonth = localStore["lastMonth"], lastDay = localStore["lastDay"], suggestion = localStore["suggestion_" + year + "_" + month + "_" + day], setup = localStore.setup, suggestionReceived = localStore["suggestionReceived_" + year + "_" + month + "_" + day], reminderReceived = localStore["reminderReceived_" + year + "_" + month + "_" + day];
 //        //uncomment next line if developing for Android
            var uniqueKey = localStore.uniqueKey;
@@ -1458,18 +1458,18 @@ saveData:function() {
            localStore["firstDay"] = firstDay;
            localStore["lastYear"] = lastYear;
            localStore["lastMonth"] = lastMonth;
-           localStore["lastDay"] = lastDay;  
-           localStore["suggestion_" + year + "_" + month + "_" + day] = suggestion;    
-           localStore.setup = setup; 
+           localStore["lastDay"] = lastDay;
+           localStore["suggestion_" + year + "_" + month + "_" + day] = suggestion;
+           localStore.setup = setup;
            localStore["suggestionReceived_" + year + "_" + month + "_" + day] = suggestionReceived;
-           localStore["reminderReceived_" + year + "_" + month + "_" + day] = reminderReceived;    
+           localStore["reminderReceived_" + year + "_" + month + "_" + day] = reminderReceived;
 //        //uncomment next line if developing for Android
            localStore.uniqueKey = uniqueKey;
            },
            error: function (request, error) {console.log(error);}
            });
 },
-    
+
 // Local Notifications Javascript
 // Stage 5 of Customization
 // This code is for signal-contingent designs
@@ -1500,7 +1500,7 @@ schedulingQuestionnaires:function() {
                         localStore["firstYear"] = date_daily.getFullYear();
                         localStore["firstMonth"] = date_daily.getMonth();
                         localStore["firstDay"] = date_daily.getDate();
-                } 
+                }
       }
       var secondLag = nightLag + 7 * 24 * 60  * 60 * 1000;
       for (i = 0; i < 5; i++) {
@@ -1508,7 +1508,7 @@ schedulingQuestionnaires:function() {
                id_daily = 101 + parseInt(i + 5);
                date_daily = new Date(now + interval_daily);
                window.plugin.notification.local.add({icon: 'ic_launcher', id: id_daily, date: date_daily, message: 'Time for your daily Survey!', title: "Hello, I'm back", autoCancel: true});
-               localStore['notification1_'+ (i + 5)] = localStore.participant_id + "_" + id_daily + "_" + date_daily; 
+               localStore['notification1_'+ (i + 5)] = localStore.participant_id + "_" + id_daily + "_" + date_daily;
       }
       var thirdLag = secondLag + 7 * 24 * 60  * 60 * 1000;
       for (i = 0; i < 5; i++) {
@@ -1516,13 +1516,13 @@ schedulingQuestionnaires:function() {
                id_daily = 101 + parseInt(i + 10);
                date_daily = new Date(now + interval_daily);
                window.plugin.notification.local.add({icon: 'ic_launcher', id: id_daily, date: date_daily, message: 'Time for your daily Survey!', title: "Hello, I'm back", autoCancel: true});
-               localStore['notification1_'+ (i + 10)] = localStore.participant_id + "_" + id_daily + "_" + date_daily; 
+               localStore['notification1_'+ (i + 10)] = localStore.participant_id + "_" + id_daily + "_" + date_daily;
                if (i == 4) {
                         localStore["lastYear"] = date_daily.getFullYear();
                         localStore["lastMonth"] = date_daily.getMonth();
                         localStore["lastDay"] = date_daily.getDate();
                 }
-      }  
+      }
 
 
       //Schedule wake-up reminders
@@ -1551,7 +1551,7 @@ schedulingQuestionnaires:function() {
                date_wakeup = new Date(now + interval_wakeup);
                window.plugin.notification.local.add({icon: 'ic_launcher', id: id_wakeup, date: date_wakeup, message: 'Time for your sleep Survey!', title: "Hello, I'm back", autoCancel: true});
                localStore['notification2_'+ (i + 10)] = localStore.participant_id + "_" + id_wakeup + "_" + date_wakeup;
-      }                   
+      }
 
       //Schedule reminders every 3 days for 5 times
       for (i = 0; i < 3; i++) {
