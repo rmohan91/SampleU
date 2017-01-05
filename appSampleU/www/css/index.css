@@ -1,0 +1,209 @@
+x* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#FFFFFF;
+    font-family:Helvetica, Arial, sans-serif;
+	text-align:center;
+	font-size:6.2vw;
+    height:100%;
+    margin:0em;
+    padding:0em;
+    width:100%;
+	color:#000000;
+    font-weight:bold;
+}
+
+p {  
+    padding: 0 4vw 0;
+}
+
+button.options {
+    color: #4169E1;
+    background-color:#FFFFFF;
+  	font-weight: bold;
+  	font-size:6.2vw;
+  	padding: 3.0vw 4.5vw;
+  	font-family:Helvetica, Arial, sans-serif;
+    border-radius:1vw;
+    border-color:#4169E1;
+    border-style:solid;
+  	width:90%;
+  	height:auto;
+  	margin-bottom:1.8vw;
+}
+
+button.next {
+    color: #FFFFFF;
+    background-color:#FFA500;
+    font-weight: bold;
+    font-size:7vw;
+    padding: 3.0vw 4.5vw;
+    font-family:Helvetica, Arial, sans-serif;
+    border-radius:none;
+    border-color:#FFA500;
+    border-style:solid;
+    width:70%;
+    height:auto;
+    position:fixed;
+    bottom:0;
+    right:0;
+}
+
+button.first {
+    color: #FFFFFF;
+    background-color:#FFA500;
+    font-weight: bold;
+    font-size:7vw;
+    padding: 3.0vw 4.5vw;
+    font-family:Helvetica, Arial, sans-serif;
+    border-radius:1vw;
+    border-color:#FFA500;
+    border-style:solid;
+    width:100%;
+    height:auto;
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+
+button.start {
+    color: #FFFFFF;
+    background-color:#9ACD32;
+    font-weight: bold;
+    font-size:7vw;
+    padding: 3.0vw 4.5vw;
+    font-family:Helvetica, Arial, sans-serif;
+    border-radius:1vw;
+    border-color:#9ACD32;
+    border-style:solid;
+    width:100%;
+    height:auto;
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+
+button.back {
+    color: #FFFFFF;
+    background-color:#A9A9A9;
+    font-weight: bold;
+    font-size:7vw;
+    padding: 3.0vw 4.5vw;
+    font-family:Helvetica, Arial, sans-serif;
+    border-radius:0;
+    border-color:#A9A9A9;
+    border-style:solid;
+    width:30%;
+    height:auto;
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+
+button.submit {
+    color: #FFFFFF;
+    background-color:#9ACD32;
+    font-weight: bold;
+    font-size:7vw;
+    padding: 3.0vw 4.5vw;
+    font-family:Helvetica, Arial, sans-serif;
+    border-radius:0;
+    border-color:#9ACD32;
+    border-style:solid;
+    width:90%;
+    height:auto;
+    position:fixed;
+    bottom:0;
+    right:0;
+}
+
+textarea {
+  	font-size:6.2vw;
+  	font-weight: bold;
+  	border-radius: 0.25vw;
+  	border-color: #000000;
+  	border-style: solid;
+  	width: 90%;
+  	height: 1.5em;
+}
+
+ul
+{
+	list-style-type: none;
+	padding: 0em;
+	margin: 0em;
+}
+
+h1 {
+    font-size:6.2vw;
+    font-weight:normal;
+    margin:2.5vw;
+    overflow:visible;
+    padding:0em;
+    text-align:center;
+}
+
+/*Portrait layout (default)*/
+.app {
+    /*background-color:#002A5.5C;*/
+    /*position:absolute;*/             /* position in the center of the screen */
+    /*left:5.50%;*/
+    /*top:5.50%;*/
+    /*height:5.50px;*/                   /* text area height */
+    /*width:225.5px;*/                   /* text area width */
+    /*text-align:center;*/
+    /*padding:180px 0px 0px 0px;*/     /* image height is 200px (bottom 20px are overlapped with text) */
+    /*margin:-115.5px 0px 0px -112px;*/  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75.5px 0em 75.5px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0em 0em -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:7vw;
+    margin:0em 30px;
+    padding:0.2em 0em;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
