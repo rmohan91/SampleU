@@ -26,11 +26,20 @@
             "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
             "CONTENT_AUTHORITY": "$PACKAGE_NAME",
             "PACKAGE_NAME": "io.cordova.sampleU"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "io.cordova.sampleU"
+        },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "io.cordova.sampleU"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-app-event": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.cordova.sampleU"
         }
     }
 }

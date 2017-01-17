@@ -645,7 +645,7 @@ bindEvents: function() {
 //these functions tell the app what to do at different stages of running
 onDeviceReady: function() {
     // Enable background mode
-    /*cordova.plugins.backgroundMode.setDefaults({ text:''});
+    cordova.plugins.backgroundMode.setDefaults({ text:''});
     cordova.plugins.backgroundMode.enable();
 
     backgroundGeolocation.configure(app.locationSuccess, app.locationError, {
@@ -691,7 +691,7 @@ onDeviceReady: function() {
                 //alert("Adding geofence failed");
                 console.log('Adding geofence failed', reason);
             });
-    }*/
+    }
 
     app.init();
 },
