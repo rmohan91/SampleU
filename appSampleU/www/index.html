@@ -16,7 +16,7 @@
      KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
-	
+
 -->
 <html>
     <head>
@@ -27,6 +27,7 @@
         <!-- make sure this url is correct (i.e., that your file structure looks like the one outlined in the paper-->
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <meta name="msapplication-tap-highlight" content="no" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *; connect-src https://script.google.com/macros/s/AKfycbwcEnCWbx-yr_iQHfjhVttQ1I5H4qF9XGUYo8PSMsvt2dP3jTQ/exec https://script.googleusercontent.com/macros/echo">
         <title>Diary Survey</title>
         <!-- make sure these URLs are correct (i.e., that your file structure looks like the one outlined in the paper-->
         <script type="text/javascript" src="cordova.js"></script>
@@ -40,6 +41,6 @@
           <div id="window">
               <div id="question"><ul></ul></div>
           </div>
-      </div>   
+      </div>
     </body>
 </html>

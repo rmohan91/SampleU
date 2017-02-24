@@ -1131,7 +1131,7 @@ renderLastPage: function(pageData) {
     //snooze function logic
     //this conditional statement executes the snooze function when the snooze message is shown
     //Uncomment the function below when testing the snooze function (Stage 4 of Customization)
-    app.saveDataLastPage();
+    //app.saveDataLastPage();
 },
 
 /* Initialize the whole thing */
@@ -1384,8 +1384,8 @@ saveDataLastPage:function() {
     //       localStore.removeItem(year + "_" + month + "_" + day + "_urgent");
     //}
     $.ajax({
-           type: 'post',
-           url: 'http://reflection.nfshost.com/data_collector.cgi',
+           type: 'get',
+           url: 'https://script.google.com/macros/s/AKfycbwcEnCWbx-yr_iQHfjhVttQ1I5H4qF9XGUYo8PSMsvt2dP3jTQ/exec',
            data: localStore,
            crossDomain: true,
            success: function (result) {
@@ -1393,6 +1393,7 @@ saveDataLastPage:function() {
            var pid = localStore.participant_id, latitude = localStore["latitude"], longitude = localStore["longitude"], wakeup = localStore["wakeup"], lunchtime = localStore["lunchtime"], weather = localStore["weather_" + year + "_" + month + "_" + day], daily = localStore["dailySurvey_" + year + "_" + month + "_" + day], sleep = localStore["sleepSurvey_" + year + "_" + month + "_" + day];
            var firstYear = localStore["firstYear"], firstMonth = localStore["firstMonth"], firstDay = localStore["firstDay"], lastYear = localStore["lastYear"], lastMonth = localStore["lastMonth"], lastDay = localStore["lastDay"], suggestion = localStore["suggestion_" + year + "_" + month + "_" + day], setup = localStore.setup, suggestionReceived = localStore["suggestionReceived_" + year + "_" + month + "_" + day], reminderReceived = localStore["reminderReceived_" + year + "_" + month + "_" + day];
 //        //uncomment next line if developing for Android*/
+
            var uniqueKey = localStore.uniqueKey;
            localStore.clear();
            localStore.participant_id = pid;
@@ -1414,6 +1415,7 @@ saveDataLastPage:function() {
            localStore["suggestionReceived_" + year + "_" + month + "_" + day] = suggestionReceived;
            localStore["reminderReceived_" + year + "_" + month + "_" + day] = reminderReceived;
 //        //uncomment next line if developing for Android*/
+
            localStore.uniqueKey = uniqueKey;
            navigator.notification.alert("Data Sent Successfully", function(){}, "", "");
            },
@@ -1422,6 +1424,7 @@ saveDataLastPage:function() {
 },
 
 //uncomment this function to test data saving function (Stage 2 of Customization)
+/*
 saveData:function() {
      var datestamp = new Date();
      var year = datestamp.getFullYear();
@@ -1436,6 +1439,53 @@ saveData:function() {
      $.ajax({
            type: 'post',
            url: 'http://reflection.nfshost.com/data_collector.cgi',
+           data: localStore,
+           crossDomain: true,
+           success: function (result) {
+          //Define all the variables that need to be retained after sending the data
+           var pid = localStore.participant_id, latitude = localStore["latitude"], longitude = localStore["longitude"], wakeup = localStore["wakeup"], lunchtime = localStore["lunchtime"], weather = localStore["weather_" + year + "_" + month + "_" + day], daily = localStore["dailySurvey_" + year + "_" + month + "_" + day], sleep = localStore["sleepSurvey_" + year + "_" + month + "_" + day];
+           var firstYear = localStore["firstYear"], firstMonth = localStore["firstMonth"], firstDay = localStore["firstDay"], lastYear = localStore["lastYear"], lastMonth = localStore["lastMonth"], lastDay = localStore["lastDay"], suggestion = localStore["suggestion_" + year + "_" + month + "_" + day], setup = localStore.setup, suggestionReceived = localStore["suggestionReceived_" + year + "_" + month + "_" + day], reminderReceived = localStore["reminderReceived_" + year + "_" + month + "_" + day];
+//        //uncomment next line if developing for Android
+           var uniqueKey = localStore.uniqueKey;
+           localStore.clear();
+           localStore.participant_id = pid;
+           localStore.latitude = latitude;
+           localStore.longitude = longitude;
+           localStore.wakeup = wakeup;
+           localStore.lunchtime = lunchtime;
+           localStore["weather_" + year + "_" + month + "_" + day] = weather;
+           localStore["dailySurvey_" + year + "_" + month + "_" + day] = daily;
+           localStore["sleepSurvey_" + year + "_" + month + "_" + day] = sleep;
+           localStore["firstYear"] = firstYear;
+           localStore["firstMonth"] = firstMonth;
+           localStore["firstDay"] = firstDay;
+           localStore["lastYear"] = lastYear;
+           localStore["lastMonth"] = lastMonth;
+           localStore["lastDay"] = lastDay;
+           localStore["suggestion_" + year + "_" + month + "_" + day] = suggestion;
+           localStore.setup = setup;
+           localStore["suggestionReceived_" + year + "_" + month + "_" + day] = suggestionReceived;
+           localStore["reminderReceived_" + year + "_" + month + "_" + day] = reminderReceived;
+//        //uncomment next line if developing for Android
+           localStore.uniqueKey = uniqueKey;
+           },
+           error: function (request, error) {console.log(error);}
+           });
+},*/
+saveData:function() {
+     var datestamp = new Date();
+     var year = datestamp.getFullYear();
+     var month = datestamp.getMonth();
+     var day = datestamp.getDate();
+     //if (localStore[year + "_" + month + "_" + day + "_habit_strength"] == "undefined") {
+     //     localStore.removeItem(year + "_" + month + "_" + day + "_habit_strength");
+     //}
+     //if (localStore[year + "_" + month + "_" + day + "_urgent"] == "undefined") {
+     //      localStore.removeItem(year + "_" + month + "_" + day + "_urgent");
+     //}
+     $.ajax({
+           type: 'get',
+           url: 'https://script.google.com/macros/s/AKfycbwcEnCWbx-yr_iQHfjhVttQ1I5H4qF9XGUYo8PSMsvt2dP3jTQ/exec',
            data: localStore,
            crossDomain: true,
            success: function (result) {
