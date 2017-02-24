@@ -22,15 +22,15 @@
         "de.appplant.cordova.plugin.local-notification": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "io.cordova.sampleU"
+        },
         "cordova-plugin-mauron85-background-geolocation": {
             "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
             "CONTENT_AUTHORITY": "$PACKAGE_NAME",
             "PACKAGE_NAME": "io.cordova.sampleU"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "io.cordova.sampleU"
-        },
-        "cordova-plugin-background-mode": {
+        "cordova-plugin-geofence": {
             "PACKAGE_NAME": "io.cordova.sampleU"
         }
     },
@@ -39,6 +39,9 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.cordova.sampleU"
+        },
+        "es6-promise-plugin": {
             "PACKAGE_NAME": "io.cordova.sampleU"
         }
     }

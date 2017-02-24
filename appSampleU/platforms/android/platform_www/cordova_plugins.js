@@ -53,6 +53,15 @@ module.exports = [
         ]
     },
     {
+        "id": "cordova-plugin-background-mode.BackgroundMode",
+        "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+        "pluginId": "cordova-plugin-background-mode",
+        "clobbers": [
+            "cordova.plugins.backgroundMode",
+            "plugin.backgroundMode"
+        ]
+    },
+    {
         "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
         "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
         "pluginId": "cordova-plugin-mauron85-background-geolocation",
@@ -61,26 +70,25 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-geolocation.geolocation",
-        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-        "pluginId": "cordova-plugin-geolocation",
-        "clobbers": [
-            "navigator.geolocation"
-        ]
-    },
-    {
-        "id": "cordova-plugin-geolocation.PositionError",
-        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-        "pluginId": "cordova-plugin-geolocation",
+        "id": "es6-promise-plugin.Promise",
+        "file": "plugins/es6-promise-plugin/www/promise.js",
+        "pluginId": "es6-promise-plugin",
         "runs": true
     },
     {
-        "id": "cordova-plugin-background-mode.BackgroundMode",
-        "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
-        "pluginId": "cordova-plugin-background-mode",
+        "id": "cordova-plugin-geofence.TransitionType",
+        "file": "plugins/cordova-plugin-geofence/www/TransitionType.js",
+        "pluginId": "cordova-plugin-geofence",
         "clobbers": [
-            "cordova.plugins.backgroundMode",
-            "plugin.backgroundMode"
+            "TransitionType"
+        ]
+    },
+    {
+        "id": "cordova-plugin-geofence.geofence",
+        "file": "plugins/cordova-plugin-geofence/www/geofence.js",
+        "pluginId": "cordova-plugin-geofence",
+        "clobbers": [
+            "geofence"
         ]
     }
 ];
@@ -93,10 +101,11 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.4",
     "cordova-plugin-app-event": "1.2.0",
     "de.appplant.cordova.plugin.local-notification": "0.8.4",
+    "cordova-plugin-background-mode": "0.6.6-dev",
     "cordova-plugin-mauron85-background-geolocation": "2.2.5",
     "cordova-plugin-compat": "1.1.0",
-    "cordova-plugin-geolocation": "2.4.1",
-    "cordova-plugin-background-mode": "0.6.6-dev"
+    "es6-promise-plugin": "3.0.2",
+    "cordova-plugin-geofence": "0.6.0"
 };
 // BOTTOM OF METADATA
 });

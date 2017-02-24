@@ -25,19 +25,15 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"BackgroundGeolocation\"><param name=\"android-package\" value=\"com.tenforwardconsulting.cordova.BackgroundGeolocationPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"BackgroundMode\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.background.BackgroundMode\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<preference name=\"KeepRunning\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BackgroundGeolocation\"><param name=\"android-package\" value=\"com.tenforwardconsulting.cordova.BackgroundGeolocationPlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -48,15 +44,19 @@
                     "/manifest": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />",
-                            "count": 2
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.AUTHENTICATE_ACCOUNTS\" />",
@@ -84,11 +84,11 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" />",
@@ -97,10 +97,6 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
                             "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.hardware.location\" />",
@@ -137,6 +133,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<service android:name=\"de.appplant.cordova.plugin.background.ForegroundService\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
                             "count": 1
                         },
@@ -161,24 +161,15 @@
                             "count": 1
                         },
                         {
-                            "xml": "<service android:name=\"de.appplant.cordova.plugin.background.ForegroundService\" />",
+                            "xml": "<service android:exported=\"false\" android:label=\"@string/app_name\" android:name=\"com.cowbell.cordova.geofence.ReceiveTransitionsIntentService\"></service>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"com.cowbell.cordova.geofence.BootReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
                             "count": 1
                         }
                     ],
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
-                            "count": 1
-                        }
-                    ]
+                    "/*": []
                 }
             },
             "res/values/strings.xml": {
@@ -190,6 +181,16 @@
                         },
                         {
                             "xml": "<string name=\"content_authority\">io.cordova.sampleU</string>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"GeofencePlugin\"><param name=\"android-package\" value=\"com.cowbell.cordova.geofence.GeofencePlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -216,6 +217,9 @@
         "de.appplant.cordova.plugin.local-notification": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "io.cordova.sampleU"
+        },
         "cordova-plugin-mauron85-background-geolocation": {
             "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
             "CONTENT_AUTHORITY": "$PACKAGE_NAME",
@@ -224,10 +228,10 @@
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "io.cordova.sampleU"
         },
-        "cordova-plugin-geolocation": {
+        "es6-promise-plugin": {
             "PACKAGE_NAME": "io.cordova.sampleU"
         },
-        "cordova-plugin-background-mode": {
+        "cordova-plugin-geofence": {
             "PACKAGE_NAME": "io.cordova.sampleU"
         }
     },
@@ -286,6 +290,15 @@
             ]
         },
         {
+            "id": "cordova-plugin-background-mode.BackgroundMode",
+            "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+            "pluginId": "cordova-plugin-background-mode",
+            "clobbers": [
+                "cordova.plugins.backgroundMode",
+                "plugin.backgroundMode"
+            ]
+        },
+        {
             "id": "cordova-plugin-mauron85-background-geolocation.backgroundGeolocation",
             "file": "plugins/cordova-plugin-mauron85-background-geolocation/www/backgroundGeolocation.js",
             "pluginId": "cordova-plugin-mauron85-background-geolocation",
@@ -294,26 +307,25 @@
             ]
         },
         {
-            "id": "cordova-plugin-geolocation.geolocation",
-            "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-            "pluginId": "cordova-plugin-geolocation",
-            "clobbers": [
-                "navigator.geolocation"
-            ]
-        },
-        {
-            "id": "cordova-plugin-geolocation.PositionError",
-            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-            "pluginId": "cordova-plugin-geolocation",
+            "id": "es6-promise-plugin.Promise",
+            "file": "plugins/es6-promise-plugin/www/promise.js",
+            "pluginId": "es6-promise-plugin",
             "runs": true
         },
         {
-            "id": "cordova-plugin-background-mode.BackgroundMode",
-            "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
-            "pluginId": "cordova-plugin-background-mode",
+            "id": "cordova-plugin-geofence.TransitionType",
+            "file": "plugins/cordova-plugin-geofence/www/TransitionType.js",
+            "pluginId": "cordova-plugin-geofence",
             "clobbers": [
-                "cordova.plugins.backgroundMode",
-                "plugin.backgroundMode"
+                "TransitionType"
+            ]
+        },
+        {
+            "id": "cordova-plugin-geofence.geofence",
+            "file": "plugins/cordova-plugin-geofence/www/geofence.js",
+            "pluginId": "cordova-plugin-geofence",
+            "clobbers": [
+                "geofence"
             ]
         }
     ],
@@ -324,9 +336,10 @@
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-app-event": "1.2.0",
         "de.appplant.cordova.plugin.local-notification": "0.8.4",
+        "cordova-plugin-background-mode": "0.6.6-dev",
         "cordova-plugin-mauron85-background-geolocation": "2.2.5",
         "cordova-plugin-compat": "1.1.0",
-        "cordova-plugin-geolocation": "2.4.1",
-        "cordova-plugin-background-mode": "0.6.6-dev"
+        "es6-promise-plugin": "3.0.2",
+        "cordova-plugin-geofence": "0.6.0"
     }
 }
